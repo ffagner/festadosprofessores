@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Festa dos Professores 2026 — Montador de Identidade Visual</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Parisienne&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Kaushan+Script&family=Quicksand:wght@400;500;600&family=Dancing+Script:wght@500;600&family=Jost:wght@300;400;500;600&family=Sacramento&family=Crimson+Text:ital@0;1&family=Great+Vibes&family=Alex+Brush&family=Tangerine:wght@700&family=Pinyon+Script&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FBF7EC;
+    --paper:#F7F2E4;
+    --ink:#123B24;
+    --ink-soft:#2E5039;
+    --green-mid:#1B5E33;
+    --gold:#C99A2C;
+    --gold-bright:#E8B33A;
+    --line: rgba(18,59,36,0.16);
+    --line-strong: rgba(18,59,36,0.3);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Jost', sans-serif;
+    font-weight:400;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{ max-width:1000px; margin:0 auto; padding:64px 28px 96px; }
+
+  .ornament{ display:flex; align-items:center; justify-content:center; gap:10px; margin:0 auto; width:100%; max-width:340px; }
+  .ornament .bar{ flex:1; height:1px; background:var(--line-strong); }
+  .ornament .dot{ width:4px; height:4px; border-radius:50%; background:var(--gold); }
+  .ornament .diamond{ width:9px;height:9px;background:var(--gold); transform:rotate(45deg); }
+
+  header{ text-align:center; margin-bottom:52px; }
+  .eyebrow{ font-family:'EB Garamond', serif; font-style:italic; font-size:15px; letter-spacing:0.04em; color:var(--ink-soft); margin:0 0 18px; }
+  h1{ font-family:'EB Garamond', serif; font-weight:500; font-size:clamp(28px, 4vw, 42px); line-height:1.18; margin:0 0 14px; color:var(--ink); }
+  h1 em{ font-style:italic; color:var(--green-mid); }
+  .lede{ font-family:'Jost', sans-serif; font-weight:300; font-size:15.5px; line-height:1.7; color:var(--ink-soft); max-width:600px; margin:22px auto 0; }
+
+  .preview-stage{ margin:48px 0 40px; }
+  .preview-label{ text-align:center; font-size:11.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-soft); margin:0 0 16px; }
+  .share-frame{ max-width:600px; margin:0 auto; padding:4px 4px 24px; }
+  .preview-card{
+    padding:56px 40px; text-align:center;
+    border:1px solid rgba(0,0,0,0.08); transition:background-color 0.35s ease; background:var(--cream);
+  }
+  .preview-orn{ display:flex; align-items:center; justify-content:center; gap:8px; margin-bottom:26px; }
+  .preview-orn .bar{ flex:1; max-width:70px; height:1px; opacity:0.55; }
+  .preview-orn .diamond{ width:7px; height:7px; transform:rotate(45deg); opacity:0.85; }
+  .preview-theme{ font-size:clamp(24px, 3.4vw, 32px); line-height:1.35; margin:0 0 16px; transition:color 0.35s ease, font-family 0.2s ease; }
+  .preview-sub{ font-family:'EB Garamond', serif; font-style:italic; font-size:14px; letter-spacing:0.02em; opacity:0.75; margin:0; }
+  .preview-meta{ text-align:center; font-size:12px; color:var(--ink-soft); margin:16px 0 0; }
+  .share-credit{ text-align:center; font-family:'Jost', sans-serif; font-size:10.5px; letter-spacing:0.04em; color:var(--ink-soft); opacity:0.55; margin:8px 0 0; }
+
+  .share-actions{ display:flex; justify-content:center; margin-top:18px; }
+  .share-btn{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--ink); color:var(--cream); border:1px solid var(--ink);
+    font-family:'Jost', sans-serif; font-weight:500; font-size:12.5px; letter-spacing:0.04em;
+    text-transform:uppercase; padding:12px 22px; cursor:pointer; transition:opacity 0.2s ease;
+  }
+  .share-btn:hover{ opacity:0.85; }
+  .share-btn:disabled{ opacity:0.55; cursor:default; }
+
+  .controls{ margin-top:44px; }
+  .control-group{ margin-bottom:34px; }
+  .control-title{ font-size:11.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-soft); margin:0 0 14px; text-align:center; }
+
+  .theme-options{ display:flex; flex-direction:column; gap:8px; }
+  .theme-row{
+    display:flex; align-items:center; gap:12px;
+    background:var(--paper); border:1px solid var(--line);
+    padding:8px 14px 8px 8px; transition:border-color 0.2s ease, background 0.2s ease;
+  }
+  .theme-row.active{ border-color:var(--gold); background:rgba(201,154,44,0.08); }
+  .theme-radio{
+    flex-shrink:0; width:34px; height:34px; border-radius:50%;
+    background:var(--cream); border:1px solid var(--line-strong); cursor:pointer;
+    font-family:'EB Garamond', serif; font-style:italic; font-size:13px; color:var(--ink-soft);
+    display:flex; align-items:center; justify-content:center; transition:border-color 0.2s ease, color 0.2s ease;
+  }
+  .theme-row.active .theme-radio{ border-color:var(--gold); color:var(--ink); background:#fff; }
+  .theme-input{
+    flex:1; min-width:0; background:transparent; border:none; border-bottom:1px solid transparent;
+    font-family:'Jost', sans-serif; font-size:13.5px; color:var(--ink); padding:8px 2px;
+    transition:border-color 0.2s ease;
+  }
+  .theme-input:focus{ outline:none; border-bottom-color:var(--gold); }
+  .theme-input::placeholder{ font-style:italic; color:var(--ink-soft); opacity:0.6; }
+
+  .row-options{ display:flex; flex-wrap:wrap; gap:10px; justify-content:center; }
+  .font-btn{
+    background:var(--paper); border:1px solid var(--line); padding:12px 22px;
+    cursor:pointer; font-size:19px; color:var(--ink); min-width:150px; text-align:center;
+    min-height:78px; display:flex; flex-direction:column; align-items:center; justify-content:center; line-height:1.15;
+    transition:border-color 0.2s ease, background 0.2s ease;
+  }
+  .font-btn:hover{ border-color:var(--line-strong); }
+  .font-btn.active{ border-color:var(--gold); background:rgba(201,154,44,0.08); }
+  .font-btn span{ display:block; font-family:'Jost',sans-serif; font-size:10.5px; letter-spacing:0.05em; text-transform:uppercase; color:var(--ink-soft); margin-top:6px; }
+
+  .swatch-btn{
+    width:52px; height:52px; border-radius:50%; cursor:pointer;
+    border:2px solid transparent; padding:0; position:relative;
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,0.08);
+  }
+  .swatch-btn.active{ border-color:var(--ink); }
+  .swatch-btn.active::after{
+    content:"✓"; position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+    font-size:16px; color:#fff; text-shadow:0 0 2px rgba(0,0,0,0.5);
+  }
+
+  .presets{ margin-top:44px; text-align:center; }
+  .preset-row{ display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-top:14px; }
+  .preset-chip{
+    background:transparent; border:1px solid var(--line-strong); color:var(--ink-soft);
+    font-family:'Jost', sans-serif; font-size:12px; letter-spacing:0.03em;
+    padding:9px 16px; cursor:pointer; transition:background 0.2s ease, color 0.2s ease;
+  }
+  .preset-chip:hover{ background:var(--ink); color:var(--cream); border-color:var(--ink); }
+
+  footer{ text-align:center; margin-top:60px; padding-top:32px; border-top:0.5px solid var(--line); }
+  footer p{ font-family:'EB Garamond', serif; font-style:italic; font-size:14px; color:var(--ink-soft); max-width:520px; margin:18px auto 0; line-height:1.6; }
+
+  /* ---- mobile ---- */
+  @media (max-width:600px){
+    .wrap{ padding:40px 18px 64px; }
+    header{ margin-bottom:36px; }
+    .eyebrow{ font-size:13px; margin-bottom:14px; }
+    .lede{ font-size:14.5px; margin-top:18px; }
+
+    .preview-stage{ margin:36px 0 32px; }
+    .share-frame{ padding:2px 2px 18px; }
+    .preview-card{ padding:36px 22px; }
+    .preview-theme{ font-size:clamp(20px, 6vw, 26px); }
+    .preview-sub{ font-size:12.5px; }
+    .preview-meta{ font-size:11px; padding:0 8px; }
+    .share-btn{ width:100%; justify-content:center; }
+
+    .controls{ margin-top:32px; }
+    .control-group{ margin-bottom:26px; }
+
+    .theme-row{ padding:6px 10px 6px 6px; gap:9px; }
+    .theme-radio{ width:30px; height:30px; font-size:12px; }
+    .theme-input{ font-size:13px; }
+
+    .row-options{ gap:8px; }
+    .font-btn{ flex:1 1 calc(50% - 8px); min-width:0; padding:12px 10px; font-size:16px; }
+
+    .swatch-btn{ width:44px; height:44px; }
+    .swatch-btn.active::after{ font-size:14px; }
+
+    .preset-chip{ flex:1 1 calc(50% - 10px); padding:11px 10px; }
+  }
+
+  /* comfortable tap targets on touch devices */
+  @media (hover:none){
+    .theme-radio, .theme-input, .font-btn, .swatch-btn, .preset-chip{ -webkit-tap-highlight-color: rgba(201,154,44,0.25); }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <p class="eyebrow">Secretaria Municipal de Educação · Croatá</p>
+    <h1>Festa dos Professores 2026<br><em>montador de identidade visual</em></h1>
+    <div class="ornament"><span class="bar"></span><span class="dot"></span><span class="diamond"></span><span class="dot"></span><span class="bar"></span></div>
+    <p class="lede">Combine o tema, a fonte manuscrita e as cores para ver a amostra do card em tempo real. Todas as combinações usam a paleta verde e dourado já aprovada.</p>
+  </header>
+
+  <div class="preview-stage">
+    <p class="preview-label">Amostra ao vivo</p>
+    <div class="share-frame" id="shareFrame">
+      <div class="preview-card" id="previewCard">
+        <div class="preview-orn"><span class="bar" id="prevBar1"></span><span class="diamond" id="prevDiamond"></span><span class="bar" id="prevBar2"></span></div>
+        <p class="preview-theme" id="previewTheme">Excelência que se ensina: professores, orgulho da nossa educação</p>
+        <p class="preview-sub" id="previewSub">Festa dos Professores · Croatá 2026</p>
+      </div>
+      <p class="preview-meta" id="previewMeta">Tema A · Parisienne · fundo creme claro · texto verde profundo</p>
+      <p class="share-credit">Desenvolvido por Fagner Martins Farias</p>
+    </div>
+    <div class="share-actions">
+      <button class="share-btn" id="shareBtn" type="button">Baixar / compartilhar imagem</button>
+    </div>
+  </div>
+
+  <div class="controls">
+
+    <div class="control-group">
+      <p class="control-title">1 — Escolha o tema</p>
+      <div class="theme-options" id="themeOptions">
+        <div class="theme-row active" data-key="A">
+          <button class="theme-radio" type="button" data-key="A" aria-label="Selecionar tema A">A</button>
+          <input class="theme-input" type="text" data-key="A" value="Excelência que se ensina: professores, orgulho da nossa educação">
+        </div>
+        <div class="theme-row" data-key="B">
+          <button class="theme-radio" type="button" data-key="B" aria-label="Selecionar tema B">B</button>
+          <input class="theme-input" type="text" data-key="B" value="Orgulho que se celebra: professores que fazem a educação brilhar">
+        </div>
+        <div class="theme-row" data-key="C">
+          <button class="theme-radio" type="button" data-key="C" aria-label="Selecionar tema C">C</button>
+          <input class="theme-input" type="text" data-key="C" value="Excelência em movimento: professores que elevam a nossa educação">
+        </div>
+        <div class="theme-row" data-key="D">
+          <button class="theme-radio" type="button" data-key="D" aria-label="Selecionar tema D">D</button>
+          <input class="theme-input" type="text" data-key="D" value="Páginas de orgulho: professores que escrevem a excelência da nossa história">
+        </div>
+        <div class="theme-row" data-key="E">
+          <button class="theme-radio" type="button" data-key="E" aria-label="Selecionar tema E, personalizado">E</button>
+          <input class="theme-input" type="text" data-key="E" value="" placeholder="Escreva seu próprio tema aqui…">
+        </div>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <p class="control-title">2 — Escolha a fonte manuscrita</p>
+      <div class="row-options" id="fontOptions">
+        <button class="font-btn active" data-font="'Parisienne', cursive" data-label="Parisienne" style="font-family:'Parisienne', cursive;">Excelência<span>Parisienne</span></button>
+        <button class="font-btn" data-font="'Kaushan Script', cursive" data-label="Kaushan Script" style="font-family:'Kaushan Script', cursive; font-size:16px;">Excelência<span>Kaushan Script</span></button>
+        <button class="font-btn" data-font="'Dancing Script', cursive" data-label="Dancing Script" style="font-family:'Dancing Script', cursive; font-weight:600;">Excelência<span>Dancing Script</span></button>
+        <button class="font-btn" data-font="'Sacramento', cursive" data-label="Sacramento" style="font-family:'Sacramento', cursive;">Excelência<span>Sacramento</span></button>
+        <button class="font-btn" data-font="'Great Vibes', cursive" data-label="Great Vibes" style="font-family:'Great Vibes', cursive; font-size:21px;">Excelência<span>Great Vibes</span></button>
+        <button class="font-btn" data-font="'Alex Brush', cursive" data-label="Alex Brush" style="font-family:'Alex Brush', cursive; font-size:22px;">Excelência<span>Alex Brush</span></button>
+        <button class="font-btn" data-font="'Tangerine', cursive" data-label="Tangerine" style="font-family:'Tangerine', cursive; font-weight:700; font-size:28px;">Excelência<span>Tangerine</span></button>
+        <button class="font-btn" data-font="'Pinyon Script', cursive" data-label="Pinyon Script" style="font-family:'Pinyon Script', cursive; font-size:22px;">Excelência<span>Pinyon Script</span></button>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <p class="control-title">3 — Cor de fundo</p>
+      <div class="row-options" id="bgOptions">
+        <button class="swatch-btn active" data-bg="#FBF7EC" data-label="Creme claro" style="background:#FBF7EC;" title="Creme claro · #FBF7EC"></button>
+        <button class="swatch-btn" data-bg="#F7F2E4" data-label="Papel dourado" style="background:#F7F2E4;" title="Papel dourado · #F7F2E4"></button>
+        <button class="swatch-btn" data-bg="#FAF0D7" data-label="Dourado suave" style="background:#FAF0D7;" title="Dourado suave · #FAF0D7"></button>
+        <button class="swatch-btn" data-bg="#EAF1EB" data-label="Verde-sálvia claro" style="background:#EAF1EB;" title="Verde-sálvia claro · #EAF1EB"></button>
+        <button class="swatch-btn" data-bg="#123B24" data-label="Verde profundo" style="background:#123B24;" title="Verde profundo · #123B24"></button>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <p class="control-title">4 — Cor da fonte</p>
+      <div class="row-options" id="colorOptions">
+        <button class="swatch-btn active" data-color="#123B24" data-label="Verde profundo" style="background:#123B24;" title="Verde profundo · #123B24"></button>
+        <button class="swatch-btn" data-color="#1B5E33" data-label="Verde médio" style="background:#1B5E33;" title="Verde médio · #1B5E33"></button>
+        <button class="swatch-btn" data-color="#4C7A5A" data-label="Verde-sálvia" style="background:#4C7A5A;" title="Verde-sálvia · #4C7A5A"></button>
+        <button class="swatch-btn" data-color="#C99A2C" data-label="Dourado" style="background:#C99A2C;" title="Dourado · #C99A2C"></button>
+        <button class="swatch-btn" data-color="#E8B33A" data-label="Dourado claro" style="background:#E8B33A;" title="Dourado claro · #E8B33A"></button>
+        <button class="swatch-btn" data-color="#FBF7EC" data-label="Creme" style="background:#FBF7EC;" title="Creme · #FBF7EC"></button>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="presets">
+    <p class="control-title">Combinações sugeridas na proposta original</p>
+    <div class="preset-row">
+      <button class="preset-chip" data-preset="A">Opção A</button>
+      <button class="preset-chip" data-preset="B">Opção B</button>
+      <button class="preset-chip" data-preset="C">Opção C</button>
+      <button class="preset-chip" data-preset="D">Opção D</button>
+    </div>
+  </div>
+
+  <footer>
+    <div class="ornament"><span class="bar"></span><span class="dot"></span><span class="diamond"></span><span class="dot"></span><span class="bar"></span></div>
+    <p>Monte a combinação preferida e use o botão acima para baixar ou compartilhar a amostra como imagem.</p>
+  </footer>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script>
+  var state = {
+    themeKey: "A",
+    theme: "Excelência que se ensina: professores, orgulho da nossa educação",
+    font: "'Parisienne', cursive",
+    fontLabel: "Parisienne",
+    bg: "#FBF7EC",
+    bgLabel: "fundo creme claro",
+    color: "#123B24",
+    colorLabel: "texto verde profundo"
+  };
+
+  var presets = {
+    A: { themeKey: "A", theme: "Excelência que se ensina: professores, orgulho da nossa educação", font: "'Parisienne', cursive", fontLabel: "Parisienne", bg: "#F7F2E4", bgLabel: "papel dourado", color: "#123B24", colorLabel: "texto verde profundo" },
+    B: { themeKey: "B", theme: "Orgulho que se celebra: professores que fazem a educação brilhar", font: "'Kaushan Script', cursive", fontLabel: "Kaushan Script", bg: "#FAF0D7", bgLabel: "dourado suave", color: "#1B5E33", colorLabel: "texto verde médio" },
+    C: { themeKey: "C", theme: "Excelência em movimento: professores que elevam a nossa educação", font: "'Dancing Script', cursive", fontLabel: "Dancing Script", bg: "#FBF7EC", bgLabel: "fundo creme claro", color: "#155C38", colorLabel: "texto verde" },
+    D: { themeKey: "D", theme: "Páginas de orgulho: professores que escrevem a excelência da nossa história", font: "'Sacramento', cursive", fontLabel: "Sacramento", bg: "#EAF1EB", bgLabel: "verde-sálvia claro", color: "#4C7A5A", colorLabel: "texto verde-sálvia" }
+  };
+
+  var previewCard = document.getElementById('previewCard');
+  var previewTheme = document.getElementById('previewTheme');
+  var previewMeta = document.getElementById('previewMeta');
+  var prevBar1 = document.getElementById('prevBar1');
+  var prevBar2 = document.getElementById('prevBar2');
+  var prevDiamond = document.getElementById('prevDiamond');
+
+  function render(){
+    previewCard.style.backgroundColor = state.bg;
+    previewTheme.style.fontFamily = state.font;
+    previewTheme.style.color = state.color;
+    previewTheme.textContent = state.theme || (state.themeKey === 'E' ? 'Escreva seu próprio tema aqui…' : '');
+    prevBar1.style.background = state.color;
+    prevBar2.style.background = state.color;
+    prevDiamond.style.background = state.color;
+    var themeLabel = state.themeKey === 'E' ? 'Tema E · personalizado' : ('Tema ' + state.themeKey);
+    previewMeta.textContent = themeLabel + " · " + state.fontLabel + " · " + state.bgLabel + " · " + state.colorLabel;
+  }
+
+  function setActive(container, selector, matchAttr, value){
+    container.querySelectorAll(selector).forEach(function(el){
+      el.classList.toggle('active', el.getAttribute(matchAttr) === value);
+    });
+  }
+
+  function selectTheme(key){
+    state.themeKey = key;
+    var input = document.querySelector('.theme-input[data-key="' + key + '"]');
+    state.theme = input ? input.value : "";
+    document.querySelectorAll('.theme-row').forEach(function(row){
+      row.classList.toggle('active', row.getAttribute('data-key') === key);
+    });
+    render();
+  }
+
+  document.getElementById('themeOptions').addEventListener('click', function(e){
+    var radio = e.target.closest('.theme-radio');
+    if(!radio) return;
+    selectTheme(radio.getAttribute('data-key'));
+  });
+
+  document.getElementById('themeOptions').addEventListener('input', function(e){
+    var input = e.target.closest('.theme-input');
+    if(!input) return;
+    var key = input.getAttribute('data-key');
+    if(state.themeKey !== key){ selectTheme(key); return; }
+    state.theme = input.value;
+    render();
+  });
+
+  document.getElementById('fontOptions').addEventListener('click', function(e){
+    var btn = e.target.closest('.font-btn');
+    if(!btn) return;
+    state.font = btn.getAttribute('data-font');
+    state.fontLabel = btn.getAttribute('data-label');
+    setActive(this, '.font-btn', 'data-font', state.font);
+    render();
+  });
+
+  document.getElementById('bgOptions').addEventListener('click', function(e){
+    var btn = e.target.closest('.swatch-btn');
+    if(!btn) return;
+    state.bg = btn.getAttribute('data-bg');
+    state.bgLabel = btn.getAttribute('data-label').toLowerCase();
+    setActive(this, '.swatch-btn', 'data-bg', state.bg);
+    render();
+  });
+
+  document.getElementById('colorOptions').addEventListener('click', function(e){
+    var btn = e.target.closest('.swatch-btn');
+    if(!btn) return;
+    state.color = btn.getAttribute('data-color');
+    state.colorLabel = "texto " + btn.getAttribute('data-label').toLowerCase();
+    setActive(this, '.swatch-btn', 'data-color', state.color);
+    render();
+  });
+
+  document.querySelector('.preset-row').addEventListener('click', function(e){
+    var chip = e.target.closest('.preset-chip');
+    if(!chip) return;
+    var p = presets[chip.getAttribute('data-preset')];
+    state = Object.assign({}, p);
+
+    var input = document.querySelector('.theme-input[data-key="' + state.themeKey + '"]');
+    if(input) input.value = state.theme;
+    document.querySelectorAll('.theme-row').forEach(function(row){
+      row.classList.toggle('active', row.getAttribute('data-key') === state.themeKey);
+    });
+
+    setActive(document.getElementById('fontOptions'), '.font-btn', 'data-font', state.font);
+
+    var bgMatch = document.querySelector('#bgOptions .swatch-btn[data-bg="' + state.bg + '"]');
+    document.querySelectorAll('#bgOptions .swatch-btn').forEach(function(el){ el.classList.remove('active'); });
+    if(bgMatch) bgMatch.classList.add('active');
+
+    var colorMatch = document.querySelector('#colorOptions .swatch-btn[data-color="' + state.color + '"]');
+    document.querySelectorAll('#colorOptions .swatch-btn').forEach(function(el){ el.classList.remove('active'); });
+    if(colorMatch) colorMatch.classList.add('active');
+
+    render();
+  });
+
+  render();
+
+  var shareBtn = document.getElementById('shareBtn');
+  var shareFrame = document.getElementById('shareFrame');
+
+  function downloadBlob(blob, fileName){
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = fileName;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(function(){ URL.revokeObjectURL(url); }, 1000);
+  }
+
+  shareBtn.addEventListener('click', function(){
+    if(typeof html2canvas === 'undefined'){
+      shareBtn.textContent = 'Imagem indisponível no momento';
+      setTimeout(function(){ shareBtn.textContent = 'Baixar / compartilhar imagem'; }, 2500);
+      return;
+    }
+    var originalText = shareBtn.textContent;
+    shareBtn.disabled = true;
+    shareBtn.textContent = 'Gerando imagem…';
+
+    var ready = (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve();
+
+    ready.then(function(){
+      return html2canvas(shareFrame, {
+        backgroundColor: '#FBF7EC',
+        scale: 2,
+        useCORS: true
+      });
+    }).then(function(canvas){
+      canvas.toBlob(function(blob){
+        if(!blob){
+          shareBtn.textContent = 'Erro ao gerar imagem';
+          setTimeout(function(){ shareBtn.textContent = originalText; shareBtn.disabled = false; }, 2200);
+          return;
+        }
+        var fileName = 'festa-professores-2026-amostra.png';
+        var file;
+        try{ file = new File([blob], fileName, { type: 'image/png' }); }catch(e){ file = null; }
+
+        if(file && navigator.canShare && navigator.canShare({ files: [file] })){
+          navigator.share({
+            files: [file],
+            title: 'Festa dos Professores 2026',
+            text: 'Proposta de identidade visual — Secretaria Municipal de Educação de Croatá'
+          }).catch(function(){
+            downloadBlob(blob, fileName);
+          }).finally(function(){
+            shareBtn.disabled = false;
+            shareBtn.textContent = originalText;
+          });
+        } else {
+          downloadBlob(blob, fileName);
+          shareBtn.disabled = false;
+          shareBtn.textContent = originalText;
+        }
+      }, 'image/png');
+    }).catch(function(){
+      shareBtn.textContent = 'Erro ao gerar imagem';
+      setTimeout(function(){ shareBtn.textContent = originalText; shareBtn.disabled = false; }, 2200);
+    });
+  });
+</script>
+</body>
+</html>
