@@ -210,8 +210,32 @@
           <input class="theme-input" type="text" data-key="D" value="Páginas de orgulho: professores que escrevem a excelência da nossa história">
         </div>
         <div class="theme-row" data-key="E">
-          <button class="theme-radio" type="button" data-key="E" aria-label="Selecionar tema E, personalizado">E</button>
-          <input class="theme-input" type="text" data-key="E" value="" placeholder="Escreva seu próprio tema aqui…">
+          <button class="theme-radio" type="button" data-key="E" aria-label="Selecionar tema E">E</button>
+          <input class="theme-input" type="text" data-key="E" value="Mestres da excelência: inspirando vidas, transformando a nossa educação.">
+        </div>
+        <div class="theme-row" data-key="F">
+          <button class="theme-radio" type="button" data-key="F" aria-label="Selecionar tema F">F</button>
+          <input class="theme-input" type="text" data-key="F" value="Professores em ação: a força e o talento que movem nossas escolas.">
+        </div>
+        <div class="theme-row" data-key="G">
+          <button class="theme-radio" type="button" data-key="G" aria-label="Selecionar tema G">G</button>
+          <input class="theme-input" type="text" data-key="G" value="Orgulho de ser mestre: celebrando a excelência de quem ensina com o coração.">
+        </div>
+        <div class="theme-row" data-key="H">
+          <button class="theme-radio" type="button" data-key="H" aria-label="Selecionar tema H">H</button>
+          <input class="theme-input" type="text" data-key="H" value="Essência da educação: nossos professores, o nosso maior patrimônio.">
+        </div>
+        <div class="theme-row" data-key="I">
+          <button class="theme-radio" type="button" data-key="I" aria-label="Selecionar tema I">I</button>
+          <input class="theme-input" type="text" data-key="I" value="Excelência em cada sala de aula: homenageando os arquitetos da nossa educação.">
+        </div>
+        <div class="theme-row" data-key="J">
+          <button class="theme-radio" type="button" data-key="J" aria-label="Selecionar tema J">J</button>
+          <input class="theme-input" type="text" data-key="J" value="Educação de excelência se faz juntos: o nosso reconhecimento a quem nos ensina todos os dias.">
+        </div>
+        <div class="theme-row" data-key="K">
+          <button class="theme-radio" type="button" data-key="K" aria-label="Selecionar tema K, personalizado">K</button>
+          <input class="theme-input" type="text" data-key="K" value="" placeholder="Escreva seu próprio tema aqui…">
         </div>
       </div>
     </div>
@@ -303,11 +327,11 @@
     previewCard.style.backgroundColor = state.bg;
     previewTheme.style.fontFamily = state.font;
     previewTheme.style.color = state.color;
-    previewTheme.textContent = state.theme || (state.themeKey === 'E' ? 'Escreva seu próprio tema aqui…' : '');
+    previewTheme.textContent = state.theme || (state.themeKey === 'K' ? 'Escreva seu próprio tema aqui…' : '');
     prevBar1.style.background = state.color;
     prevBar2.style.background = state.color;
     prevDiamond.style.background = state.color;
-    var themeLabel = state.themeKey === 'E' ? 'Tema E · personalizado' : ('Tema ' + state.themeKey);
+    var themeLabel = state.themeKey === 'K' ? 'Tema K · personalizado' : ('Tema ' + state.themeKey);
     previewMeta.textContent = themeLabel + " · " + state.fontLabel + " · " + state.bgLabel + " · " + state.colorLabel;
   }
 
