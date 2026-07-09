@@ -564,11 +564,10 @@
         <div class="preview-card" id="previewCard">
           <div class="preview-orn"><span class="bar" id="prevBar1"></span><span class="diamond"
               id="prevDiamond"></span><span class="bar" id="prevBar2"></span></div>
-          <p class="preview-theme" id="previewTheme">Excelência que se ensina: professores, orgulho da nossa educação
-          </p>
+          <p class="preview-theme" id="previewTheme">Professores em ação: a força e o talento que movem nossas escolas.</p>
           <p class="preview-sub" id="previewSub">Festa dos Professores · Croatá 2026</p>
         </div>
-        <p class="preview-meta" id="previewMeta">Tema A · Parisienne · fundo creme claro · texto verde profundo</p>
+        <p class="preview-meta" id="previewMeta">Tema F · Parisienne · fundo creme claro · texto verde profundo</p>
         <p class="share-credit">Desenvolvido por Fagner Martins Farias</p>
       </div>
       <div class="share-actions">
@@ -581,32 +580,7 @@
       <div class="control-group">
         <p class="control-title">1 — Escolha o tema</p>
         <div class="theme-options" id="themeOptions">
-          <div class="theme-row active" data-key="A">
-            <button class="theme-radio" type="button" data-key="A" aria-label="Selecionar tema A">A</button>
-            <input class="theme-input" type="text" data-key="A"
-              value="Excelência que se ensina: professores, orgulho da nossa educação">
-          </div>
-          <div class="theme-row" data-key="B">
-            <button class="theme-radio" type="button" data-key="B" aria-label="Selecionar tema B">B</button>
-            <input class="theme-input" type="text" data-key="B"
-              value="Orgulho que se celebra: professores que fazem a educação brilhar">
-          </div>
-          <div class="theme-row" data-key="C">
-            <button class="theme-radio" type="button" data-key="C" aria-label="Selecionar tema C">C</button>
-            <input class="theme-input" type="text" data-key="C"
-              value="Excelência em movimento: professores que elevam a nossa educação">
-          </div>
-          <div class="theme-row" data-key="D">
-            <button class="theme-radio" type="button" data-key="D" aria-label="Selecionar tema D">D</button>
-            <input class="theme-input" type="text" data-key="D"
-              value="Páginas de orgulho: professores que escrevem a excelência da nossa história">
-          </div>
-          <div class="theme-row" data-key="E">
-            <button class="theme-radio" type="button" data-key="E" aria-label="Selecionar tema E">E</button>
-            <input class="theme-input" type="text" data-key="E"
-              value="Mestres da excelência: inspirando vidas, transformando a nossa educação.">
-          </div>
-          <div class="theme-row" data-key="F">
+          <div class="theme-row active" data-key="F">
             <button class="theme-radio" type="button" data-key="F" aria-label="Selecionar tema F">F</button>
             <input class="theme-input" type="text" data-key="F"
               value="Professores em ação: a força e o talento que movem nossas escolas.">
@@ -720,8 +694,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <script>
     var state = {
-      themeKey: "A",
-      theme: "Excelência que se ensina: professores, orgulho da nossa educação",
+      themeKey: "F",
+      theme: "Professores em ação: a força e o talento que movem nossas escolas.",
       font: "'Parisienne', cursive",
       fontLabel: "Parisienne",
       bg: "#FBF7EC",
@@ -731,10 +705,10 @@
     };
 
     var presets = {
-      A: { themeKey: "A", theme: "Excelência que se ensina: professores, orgulho da nossa educação", font: "'Parisienne', cursive", fontLabel: "Parisienne", bg: "#F7F2E4", bgLabel: "papel dourado", color: "#123B24", colorLabel: "texto verde profundo" },
-      B: { themeKey: "B", theme: "Orgulho que se celebra: professores que fazem a educação brilhar", font: "'Kaushan Script', cursive", fontLabel: "Kaushan Script", bg: "#FAF0D7", bgLabel: "dourado suave", color: "#1B5E33", colorLabel: "texto verde médio" },
-      C: { themeKey: "C", theme: "Excelência em movimento: professores que elevam a nossa educação", font: "'Dancing Script', cursive", fontLabel: "Dancing Script", bg: "#FBF7EC", bgLabel: "fundo creme claro", color: "#155C38", colorLabel: "texto verde" },
-      D: { themeKey: "D", theme: "Páginas de orgulho: professores que escrevem a excelência da nossa história", font: "'Sacramento', cursive", fontLabel: "Sacramento", bg: "#EAF1EB", bgLabel: "verde-sálvia claro", color: "#4C7A5A", colorLabel: "texto verde-sálvia" }
+      A: { themeKey: "F", theme: "Professores em ação: a força e o talento que movem nossas escolas.", font: "'Parisienne', cursive", fontLabel: "Parisienne", bg: "#F7F2E4", bgLabel: "papel dourado", color: "#123B24", colorLabel: "texto verde profundo" },
+      B: { themeKey: "G", theme: "Orgulho de ser mestre: celebrando a excelência de quem ensina com o coração.", font: "'Kaushan Script', cursive", fontLabel: "Kaushan Script", bg: "#FAF0D7", bgLabel: "dourado suave", color: "#1B5E33", colorLabel: "texto verde médio" },
+      C: { themeKey: "H", theme: "Essência da educação: nossos professores, o nosso maior patrimônio.", font: "'Dancing Script', cursive", fontLabel: "Dancing Script", bg: "#FBF7EC", bgLabel: "fundo creme claro", color: "#155C38", colorLabel: "texto verde" },
+      D: { themeKey: "I", theme: "Excelência em cada sala de aula: homenageando os arquitetos da nossa educação.", font: "'Sacramento', cursive", fontLabel: "Sacramento", bg: "#EAF1EB", bgLabel: "verde-sálvia claro", color: "#4C7A5A", colorLabel: "texto verde-sálvia" }
     };
 
     var previewCard = document.getElementById('previewCard');
